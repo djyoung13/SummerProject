@@ -11,6 +11,10 @@ import java.util.HashMap;
 
 import model.Menu;
 import model.Order;
+
+//In accordance with the assignment description,
+//The client must be able to pull up a menu based on the restaurant
+//and place an order requesting items on said menu.
 public class MySqlConnector {
 	
 	public MySqlConnector() {
@@ -23,6 +27,7 @@ public class MySqlConnector {
 			ex.printStackTrace();
 		}
 	}
+	//Initializes the collection as well as the database
 	private Connection getConnection() {
 		try {
 			//Confirms that the connection has been made to the SummerProject server
@@ -128,11 +133,11 @@ public class MySqlConnector {
 		PreparedStatement st = null;
 		ResultSet results = null;
 		Connection conn1 = null;
-		
+
 		try{
 			List<Menu> items = new ArrayList<Menu>();
 			conn1 = getConnection();
-			
+
 			st = conn1.prepareStatement("select * from menu where restaurant = ?");
 			st.setString(2, restaurantName);
 			results = st.executeQuery();
@@ -146,11 +151,11 @@ public class MySqlConnector {
 				items.add(item);
 			}
 			return items;
-			} catch (SQLException ex){
-				System.out.println("SQLException: " + ex.getMessage());
-				System.out.println("SQLState: " + ex.getSQLState());
-				System.out.println("VendorError: " + ex.getErrorCode());
-			}
+		} catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
 		//Freeing up resources
 		finally{
 			if (results != null){
@@ -159,20 +164,20 @@ public class MySqlConnector {
 				}
 				catch (SQLException ex2){
 				}
-				
+
 				results = null;
 			}
-			
+
 			if (st != null){
 				try{
 					st.close();
 				}
 				catch (SQLException ex2){
 				}
-				
+
 				st = null;
 			}
-			
+
 			if (conn1 != null)
 			{
 				try{
@@ -180,13 +185,15 @@ public class MySqlConnector {
 				}
 				catch(SQLException ex2){
 				}
-			
-			conn1 = null;
+
+				conn1 = null;
 			}
-		
-			}
+
+		}
 		return null;
 	}
 
-	
+	public void placeOrder(String custName){
+		
+	}
 }

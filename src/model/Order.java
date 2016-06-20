@@ -4,13 +4,24 @@ public class Order{
 	private String item;
 	private String custName;
 	private String custAddress;
-	private String paymentInfo;
+	private String cardType;
+	private String cardNumber;
+	private String securityCode;
 	
+	
+	public Order(String iName, String cName, String cAddress, String cType, String cNum, String sCode){
+		this.item = iName;
+		this.custName = cName;
+		this.custAddress = cAddress;
+		this.cardType = cType;
+		this.cardNumber = cNum;
+		this.securityCode = sCode;
+	}
 	public String getItem(){
 		return item;
 	}
 	
-	public void setID(String newItem){
+	public void setItem(String newItem){
 		this.item = newItem;
 	}
 	
@@ -30,11 +41,27 @@ public class Order{
 		this.custAddress = newAddress;
 	}
 	
-	public String getPayment(){
-		return paymentInfo;
+	public String getCardType(){
+		return cardType;
 	}
 	
-	public void setPayment(String newPayment){
-		this.paymentInfo = newPayment;
+	public void setCardType(String cType){
+		this.cardType = cType;
+	}
+	
+	public String getCardNumber(){
+		return cardNumber;
+	}
+	
+	public void setCardNumber(String cNumber){
+		this.cardNumber = cNumber;
+	}
+	
+	public String getSecCode(){
+		return securityCode;
+	}
+	
+	public void setSecCode(String secCode){
+		this.securityCode = secCode;
 	}
 }

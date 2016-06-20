@@ -201,11 +201,13 @@ public class MySqlConnector {
 		try{
 			con = getConnection();
 			
-			st = con.prepareStatement("insert into order values(?, ?, ?, ?)");
+			st = con.prepareStatement("insert into order values(?, ?, ?, ?, ?, ?)");
 			st.setString(1,  order.getItem());
 			st.setString(2,  order.getName());
 			st.setString(3,  order.getAddress());
-			st.setString(4,  order.getPayment());
+			st.setString(4,  order.getCardType());
+			st.setString(5,  order.getCardNumber());
+			st.setString(6,  order.getSecCode());
 			return st.executeUpdate() > 0;
 		}
 		catch (SQLException ex){

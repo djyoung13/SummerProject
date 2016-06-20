@@ -8,6 +8,19 @@ public class Menu {
 	private String description;
 	private float price;
 	
+	//Constructors
+	public Menu(String restaurantName, String itemName, String desc, float itemPrice){
+		this.restaurant = restaurantName;
+		this.item = itemName;
+		this.description = desc;
+		this.price = itemPrice;
+	}
+	
+	public Menu(){
+		
+	}
+	
+	//Getters and Setters
 	public int getID(){
 		return id;
 	}
@@ -49,6 +62,7 @@ public class Menu {
 		this.price = newPrice;
 	}
 	
+	//String method
 	public String toString(){
 		return item + ": " + description + "............." + price;
 	}

@@ -193,7 +193,54 @@ public class MySqlConnector {
 		return null;
 	}
 
-	public void placeOrder(String custName){
+	public boolean placeOrder(Order order){
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		Connection con = null;
 		
+		try{
+			con = getConnection();
+			
+			st = con.prepareStatement("insert into order values(?, ?, ?, ?)");
+			st.setString(1,  order.getItem());
+			st.setString(2,  order.getName());
+			st.setString(3,  order.getAddress());
+			st.setString(4,  order.getPayment());
+			return st.executeUpdate() > 0;
+		}
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
+		finally{
+			if (rs != null){
+				try{
+					rs.close();
+				}
+				catch (SQLException sqlEX){
+				}
+				rs = null;
+			}
+			
+			if (st != null){
+				try{
+					st.close();
+				}
+				catch (SQLException sqlEX){
+				}
+				st = null;
+			}
+			
+			if (con != null){
+				try{
+					con.close();
+				}
+				catch (SQLException sqlEX){
+				}
+				con = null;
+			}
+		}
+		return false;
 	}
 }

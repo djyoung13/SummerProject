@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.sql.ResultSet;
 
 import model.Menu;
@@ -22,10 +21,10 @@ import database.MySqlConnector;
 @WebService(endpointInterface = "ws.BrotherJuniper")
 public class BrotherJuniperImpl implements BrotherJuniper{
 
-	public List<Order> retrieveBJOrder(Order order){
+	public ArrayList<Order> retrieveBJOrder(Order order){
 		ResultSet result = null;
 		try{
-			List<Order> myOrder = new ArrayList<Order>();
+			ArrayList<Order> myOrder = new ArrayList<Order>();
 			String dbURL = "jdbc:mysql://localhost/SummerProject";
 			String userName = "root";
 			String password = "password";

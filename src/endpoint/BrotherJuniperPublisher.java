@@ -6,6 +6,6 @@ import ws.BrotherJuniperImpl;
 public class BrotherJuniperPublisher {
 	public static void main(String[] args)
 	{
-		Endpoint.publish("http://localhost:8000/ws/brotherjuniper", new BrotherJuniperImpl());
+		Endpoint.publish("http://localhost:8000/ws/BrotherJuniper", new BrotherJuniperImpl());
 	}
 }

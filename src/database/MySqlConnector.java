@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 import model.Menu;
 import model.Order;
@@ -186,12 +186,12 @@ public class MySqlConnector {
 	}
 	
 	//Prints the menu based on the restaurant name.
-	public List<Menu> printMenu(String restaurantName){
+	public ArrayList<Menu> printMenu(String restaurantName){
 		PreparedStatement st = null;
 		ResultSet results = null;
 		Connection conn1 = null;
 		try{
-			List<Menu> items = new ArrayList<Menu>();
+			ArrayList<Menu> items = new ArrayList<Menu>();
 			conn1 = getConnection();
 
 			st = conn1.prepareStatement("select * from menu where restaurant = ?");
@@ -251,12 +251,12 @@ public class MySqlConnector {
 
 	//An overloaded version of the printMenu method that will print ALL items
 	//regardless of what menu they are on.
-	public List<Menu> printMenu(){
+	public ArrayList<Menu> printMenu(){
 		PreparedStatement st = null;
 		ResultSet results = null;
 		Connection conn1 = null;
 		try{
-			List<Menu> items = new ArrayList<Menu>();
+			ArrayList<Menu> items = new ArrayList<Menu>();
 			conn1 = getConnection();
 
 			st = conn1.prepareStatement("select * from menu where restaurant = ?");

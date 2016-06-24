@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.sql.ResultSet;
 
 import model.Menu;
@@ -25,10 +24,10 @@ import database.MySqlConnector;
 @WebService(endpointInterface = "ws.RPTracks")
 public class RPTracksImpl implements RPTracks {
 	@Override
-	public List<Order> retrieveRPOrder(Order order){
+	public ArrayList<Order> retrieveRPOrder(Order order){
 		ResultSet result = null;
 		try{
-			List<Order> myOrder = new ArrayList<Order>();
+			ArrayList<Order> myOrder = new ArrayList<Order>();
 			String dbURL = "jdbc:mysql://localhost/SummerProject";
 			String userName = "root";
 			String password = "password";

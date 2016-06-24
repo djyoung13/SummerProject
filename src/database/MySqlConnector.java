@@ -28,7 +28,7 @@ public class MySqlConnector {
 	}
 	
 	//Initializes the connection
-	private Connection getConnection() {
+	private static Connection getConnection() {
 		try {
 			//Confirms that the connection has been made to the SummerProject server
 			Connection conn = DriverManager
@@ -48,7 +48,7 @@ public class MySqlConnector {
 	
 	//Initializes the database (if needed).
 	//Requires the following 3 methods.
-	public void initializeDB(){
+	public static void initializeDB(){
 		Connection conn = getConnection();
 		createDB(conn);
 		useDB(conn);
@@ -56,7 +56,7 @@ public class MySqlConnector {
 	}
 	
 	//Creates a database aptly titled Summer Project if one isn't there.
-	public boolean createDB(Connection conn){
+	public static boolean createDB(Connection conn){
 		try{
 			PreparedStatement st = conn.prepareStatement("CREATE DATABASE IF NOT EXISTS SummerProject;");
 			st.executeUpdate();
@@ -72,7 +72,7 @@ public class MySqlConnector {
 	}
 	
 	//Creates the tables for the menu and order.
-	public boolean createTables(Connection conn){
+	public static boolean createTables(Connection conn){
 		PreparedStatement st = null;
 		
 		/* Creates the Menu table with ALL items and the restaurant they are from */
@@ -150,7 +150,8 @@ public class MySqlConnector {
 		System.out.println("Creating 'Order' table...");
 		try{
 			st = conn.prepareStatement("CREATE TABLE IF NOT EXISTS ORDER "+
-									"(item VARCHAR(255), "+
+									"(id INTEGER not NULL AUTO_INCREMENT,"
+									+ "item VARCHAR(255), "+
 									"custName VARCHAR(255), "+
 									"custAddress VARCHAR(255), "+
 									"paymentInfo VARCHAR(255));");
@@ -366,5 +367,10 @@ public class MySqlConnector {
 			}
 		}
 		return false;
+	}
+	
+	public static void main(){
+		initializeDB();
+		
 	}
 }

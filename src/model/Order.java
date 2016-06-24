@@ -1,6 +1,7 @@
 package model;
 
 public class Order{
+	private int id;
 	private String item;
 	private String custName;
 	private String custAddress;
@@ -9,7 +10,8 @@ public class Order{
 	private String securityCode;
 	
 	
-	public Order(String iName, String cName, String cAddress, String cType, String cNum, String sCode){
+	public Order(int myID, String iName, String cName, String cAddress, String cType, String cNum, String sCode){
+		this.id = myID;
 		this.item = iName;
 		this.custName = cName;
 		this.custAddress = cAddress;
@@ -17,6 +19,18 @@ public class Order{
 		this.cardNumber = cNum;
 		this.securityCode = sCode;
 	}
+	
+	public Order(){
+	}
+	
+	public int getID(){
+		return id;
+	}
+	
+	public void setID(int newID){
+		this.id = newID;
+	}
+	
 	public String getItem(){
 		return item;
 	}

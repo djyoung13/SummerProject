@@ -4,7 +4,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import java.io.*;
-import java.util.List;
+import java.util.ArrayList;
 
 import model.Menu;
 import model.Order;
@@ -12,5 +12,5 @@ import model.Order;
 @SOAPBinding(style = Style.RPC)
 public interface ToM {
 	@WebMethod
-	public List<Order> retrieveToMOrder(Order order) throws ClassNotFoundException;
+	public ArrayList<Order> retrieveToMOrder(Order order) throws ClassNotFoundException;
 }

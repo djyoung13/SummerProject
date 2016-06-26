@@ -32,7 +32,7 @@ public class MySqlConnector {
 		try {
 			//Confirms that the connection has been made to the SummerProject server
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/SummerProject" + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost/?", "root", "password");
 			//Creates the database and the tables needed to hold the menu for the restaurant
 			//as well as the order(s) made.
 			System.out.println("Got Mysql database connection");
@@ -78,7 +78,7 @@ public class MySqlConnector {
 		/* Creates the Menu table with ALL items and the restaurant they are from */
 		try{
 			st = conn.prepareStatement("CREATE TABLE IF NOT EXISTS MENU "+
-					"(id INTEGER not NULL AUTO_INCREMENT, "+
+					"(id INTEGER AUTO_INCREMENT PRIMARY KEY, "+
 					" restaurant VARCHAR(255), "+
 					" item VARCHAR(255), " +
 					" description VARCHAR(255), " +
@@ -86,56 +86,57 @@ public class MySqlConnector {
 			st.executeUpdate();
 			System.out.println("Creating menu...");
 			System.out.println("Importing RP Tracks menu...");
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 										"VALUES('RP Tracks', 'Lots of Stuff', 'Chicken tenders, fried mozzarella, onion rings, fried mushrooms, and steak fries', 12.00)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('RP Tracks', 'Jerked Chicken Nachos', 'Spicy jerked chicken served on your choice of meat or black bean chili', 09.75)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('RP Tracks', 'Beef Burrito', 'A 1/4 pound of seasoned beef', 09.00)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('RP Tracks', 'Steakhouse Burger', 'Melted cheddar cheese, jalapeños and grilled onions', 09.50)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('RP Tracks', 'Original Patty Melt', 'A fresh ground hamburger patty served with grilled onions and swiss cheese on buttered rye toast', 09.50)");
 			st.executeUpdate();
+			System.out.println("DONE");
 			
 			System.out.println("Importing Brother Juniper's menu...");
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
-					"VALUES('Brother Juniper's', 'Denver Omlette', 'Ham, Cheddar Cheese, Green Onion, & Green Pepper', 09.95)");
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
+					"VALUES('Brother Junipers', 'Denver Omlette', 'Ham, Cheddar Cheese, Green Onion, & Green Pepper', 09.95)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
-					"VALUES('Brother Juniper's', 'Chorizo Sausage Burrito', 'Chorizo Sausage, Eggs, Tomatoes, Green Onions, Cheddar & Mozarella Cheese, Topped with Salsa & Sour Cream.', 09.50)");
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
+					"VALUES('Brother Junipers', 'Chorizo Sausage Burrito', 'Chorizo Sausage, Eggs, Tomatoes, Green Onions, Cheddar & Mozarella Cheese, Topped with Salsa & Sour Cream.', 09.50)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
-					"VALUES('Brother Juniper's', 'Oatemal with Blueberries', '', 03.00)");
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
+					"VALUES('Brother Junipers', 'Oatemal with Blueberries', '', 03.00)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
-					"VALUES('Brother Juniper's', 'Veggie Sausage Scramble', 'Veggie Sausage, Tofu, Spinach & Roasted Red Peppers', 08.95)");
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
+					"VALUES('Brother Junipers', 'Veggie Sausage Scramble', 'Veggie Sausage, Tofu, Spinach & Roasted Red Peppers', 08.95)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
-					"VALUES('Brother Juniper's', 'Egg & Cheese Biscuit Sandwich', '', 03.25)");
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
+					"VALUES('Brother Junipers', 'Egg & Cheese Biscuit Sandwich', '', 03.25)");
 			st.executeUpdate();
-			
+			System.out.println("Done");
 			System.out.println("Importing Tigers of Memphis menu...");
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('Tigers of Memphis', 'Chicken Strip Basket', 'Four breaded chicken strips with your choice of sauce', 07.99)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('Tigers of Memphis', 'Turkey Burger', 'Turkey patty, lettuce, sliced tomato, and onion on a bun, served with fries', 05.99)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('Tigers of Memphis', 'Fried Pickles', 'Fried pickle chips served with ranch dressing', 03.99)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('Tigers of Memphis', 'New York Cheesecake', 'Topped with choice of strawberry, chocolate, or caramel drizzle', 04.99)");
 			st.executeUpdate();
-			st = conn.prepareStatement("INSERT IGNORE INTO MENU (id, restaurant, item, description, price) "+
+			st = conn.prepareStatement("INSERT IGNORE INTO MENU (restaurant, item, description, price) "+
 					"VALUES('Tigers of Memphis', 'Chocolate Brownie', 'With vanilla ice cream and chocolate drizzle', 05.99)");
 			st.executeUpdate();
-			
+			System.out.println("Done");
 		}
 		catch(SQLException ex){
 			ex.getStackTrace();
@@ -149,12 +150,14 @@ public class MySqlConnector {
 		/* Creates the Order table which will track all incoming orders */
 		System.out.println("Creating 'Order' table...");
 		try{
-			st = conn.prepareStatement("CREATE TABLE IF NOT EXISTS ORDER "+
-									"(id INTEGER not NULL AUTO_INCREMENT,"
-									+ "item VARCHAR(255), "+
-									"custName VARCHAR(255), "+
-									"custAddress VARCHAR(255), "+
-									"paymentInfo VARCHAR(255));");
+			st = conn.prepareStatement("CREATE TABLE IF NOT EXISTS ORDERS "+
+									"(id INTEGER AUTO_INCREMENT PRIMARY KEY," +
+									" item VARCHAR(255),"+
+									" custName VARCHAR(255),"+
+									" custAddress VARCHAR(255),"+
+									" cardType VARCHAR(255),"+
+									" cardNumber VARCHAR(255),"+
+									" securityCode VARCHAR(255));");
 			st.executeUpdate();
 		}
 		catch(SQLException ex){
@@ -162,7 +165,7 @@ public class MySqlConnector {
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
-			System.out.println("Error in creating customers table");
+			System.out.println("Error in creating order table");
 			return false;			
 		}
 		return true;
@@ -369,7 +372,7 @@ public class MySqlConnector {
 		return false;
 	}
 	
-	public static void main(){
+	public static void main(String[] args){
 		initializeDB();
 		
 	}

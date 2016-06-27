@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,24 +26,49 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ws.*;
 import model.*;
+import database.MySqlConnector;;
 
 @Path("/rest")
 public class Restaurant {
-	ArrayList<Order> myOrders;
-	BrotherJuniper menu1;
-	RPTracks menu2;
-	ToM menu3;
-	boolean init = false;			
 	
-//	@GET
-//	@Produces({MediaType.TEXT_PLAIN})
-//	@Path("/menu/all")
-//	//public Response getAllItems() throws IOException{
-//		
-//	}
+	@GET
+	@Produces({MediaType.TEXT_PLAIN})
+	@Path("/menu/all")
+	public Response getAllItems(){
+		Connection conn = MySqlConnector.getConnection();
+		MySqlConnector.initializeDB();
+		String output = "";
+		ArrayList<Menu> items = MySqlConnector.printMenu();
+		for (Menu m : items){
+			output += m.toString() + "\n";
+		}
+		return Response.ok(output, "text/html").build();
+	}
+	
+	@GET
+	@Produces({MediaType.TEXT_PLAIN})
+	@Path("/menu/{restaurant}")
+	public Response getSpecificMenu(@PathParam("restaurant") String rName){
+		Connection conn = MySqlConnector.getConnection();
+		MySqlConnector.initializeDB();
+		String output = "";
+		ArrayList<Menu> items = MySqlConnector.printMenu(rName);
+		for (Menu m : items){
+			output += m.toString() + "\n";
+		}
+		return Response.ok(output, "text/html").build();
+		
+	}
 }

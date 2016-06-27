@@ -28,7 +28,7 @@ public class MySqlConnector {
 	}
 	
 	//Initializes the connection
-	private static Connection getConnection() {
+	public static Connection getConnection() {
 		try {
 			//Confirms that the connection has been made to the SummerProject server
 			Connection conn = DriverManager
@@ -189,7 +189,7 @@ public class MySqlConnector {
 	}
 	
 	//Prints the menu based on the restaurant name.
-	public ArrayList<Menu> printMenu(String restaurantName){
+	public static ArrayList<Menu> printMenu(String restaurantName){
 		PreparedStatement st = null;
 		ResultSet results = null;
 		Connection conn1 = null;
@@ -254,7 +254,7 @@ public class MySqlConnector {
 
 	//An overloaded version of the printMenu method that will print ALL items
 	//regardless of what menu they are on.
-	public ArrayList<Menu> printMenu(){
+	public static ArrayList<Menu> printMenu(){
 		PreparedStatement st = null;
 		ResultSet results = null;
 		Connection conn1 = null;

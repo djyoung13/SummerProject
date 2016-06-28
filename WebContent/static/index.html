@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Local Restaurant Ordering System</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div id="responseHeader">
+		<h3>Main (only) Menu:</h3>
+	</div>
+	<div> 
+		<h3>View Menu: </h3> 
+		<form>  
+			<button id="seeRPT" type="button" class="btn btn-lg btn-primary">RP Tracks</button><br>
+			<button id="seeBJ" type="button" class="btn btn-lg btn-primary">Brother Juniper's</button><br>
+			<button id="seeTOM" type="button" class="btn btn-lg btn-primary">Tigers of Memphis</button><br>
+			<button id="seeAll" type="button" class="btn btn-lg btn-primary">See All Items</button><br>
+ 		</form> 
+ 	</div>
+	
+	<div>
+		<h3>Ready to order?</h3>
+		<form>
+			Enter the ID of the item you'd like: <input type="text" name="itemID"><br>
+			Name: <input type="text" name="customerName"><br>
+			Address: <input type="text" name="customerAddress"><br>
+			Card type: <input type="text" name="custCardType"><br>
+			Card number: <input type="text" name="custCardNum"><br>
+			Security Code: <input type="text" name="custSecCode"><br>
+			<button id="submitOrder" type="button" class="btn btn-lg btn-primary">Submit order</button>
+		</form>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
+
